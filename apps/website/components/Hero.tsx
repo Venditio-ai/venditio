@@ -146,7 +146,11 @@ function Hero() {
               boxShadow: styleSettings.defaultShadow,
               animationDelay: "1.5s",
             }}
-            onClick={() => scrollToSection("waitlist")}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection(ctaButtonLink.replace("#", ""));
+              e.stopPropagation(); // Stop event from bubbling up
+            }}
           >
             <span>{ctaButtonText}</span>
           </Button>
