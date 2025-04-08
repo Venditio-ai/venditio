@@ -1,8 +1,0 @@
-{
-  "/_not-found/page": "/_not-found",
-  "/api/waitlist/route": "/api/waitlist",
-  "/favicon.ico/route": "/favicon.ico",
-  "/loading-demo/page": "/loading-demo",
-  "/svg-demo/page": "/svg-demo",
-  "/page": "/"
-}

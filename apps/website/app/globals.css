@@ -1,0 +1,185 @@
+/*
+ * Tailwind CSS Configuration
+ * ------------------------
+ * The following directives are processed by Tailwind CSS during build
+ * and should be ignored by standard CSS linters.
+ */
+
+/* Base layer contains reset styles and default styles */
+@tailwind base;
+
+/* Components layer contains class-based styles that can be reused */
+@tailwind components;
+
+/* Utilities layer contains utility classes for specific styling needs */
+@tailwind utilities;
+
+:root {
+  --radius: 0.625rem;
+  --background: #ffffff;
+  --foreground: #0a1c38;
+  --card: #ffffff;
+  --card-foreground: #0a1c38;
+  --popover: #ffffff;
+  --popover-foreground: #0a1c38;
+  --primary: #1e3a8a; /* Navy blue */
+  --primary-foreground: #ffffff;
+  --secondary: #f8fafc; /* Off-white */
+  --secondary-foreground: #0a1c38;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #3b82f6; /* Light blue */
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #3b82f6;
+}
+
+.dark {
+  --background: #0a1c38;
+  --foreground: #ffffff;
+  --card: #1e293b;
+  --card-foreground: #ffffff;
+  --popover: #1e293b;
+  --popover-foreground: #ffffff;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #1e293b;
+  --secondary-foreground: #ffffff;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #3b82f6;
+}
+
+@layer base {
+  /* 
+   * Apply default styling to all elements 
+   * The @apply directive is a Tailwind CSS feature that injects utility classes into CSS
+   */
+  * {
+    @apply border-border;
+  }
+
+  /* Base body styling */
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Additional utility classes for animations */
+.typing-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+/* Standard cursor for first line - added by JS */
+.cursor-typing {
+  border-right: 3px solid;
+  padding-right: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+/* Static typing animation for second line */
+.typing-animation-static {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 2.5s steps(40, end) forwards;
+}
+
+/* Make sure the second line text is properly contained */
+.second-line-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Add the cursor after the typing animation completes */
+.typing-animation-static::after {
+  content: "";
+  display: inline-block;
+  margin-left: 2px;
+  border-right: 3px solid;
+  height: 1em;
+  animation: blink 1s step-end infinite;
+  animation-delay: 2.5s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+    opacity: 1;
+  }
+  50% {
+    border-color: currentColor;
+    opacity: 1;
+  }
+}
+
+@keyframes typingLoop {
+  0%,
+  90% {
+    width: 100%;
+  }
+  95%,
+  100% {
+    width: 0;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Grid pattern background */
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: linear-gradient(
+      to right,
+      rgba(30, 58, 138, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(30, 58, 138, 0.05) 1px, transparent 1px);
+}
