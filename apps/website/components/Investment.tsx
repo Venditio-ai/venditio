@@ -158,7 +158,7 @@ const Investment = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {investments.length > 0 ? (
             investments.map((investment, index) => (
               <InvestmentCard
@@ -174,7 +174,7 @@ const Investment = () => {
           ) : (
             <p className="text-center w-full p-4">We are actively seeking investment opportunities. Please check our resources below.</p>
           )}
-        </div>
+        </div> */}
 
         {/* Resources Links */}
         <motion.div
@@ -191,7 +191,7 @@ const Investment = () => {
           >
             Resources
           </motion.h3>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 px-2 mx-auto max-w-full overflow-hidden">
             {resources.map((resource, index) => (
               <motion.a
                 key={index}

@@ -35,7 +35,7 @@ const TeamMember = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ delay }}
-      className="rounded-xl shadow-lg overflow-hidden border hover:shadow-xl transition-shadow min-h-[600px]"
+      className="rounded-xl shadow-lg overflow-hidden border hover:shadow-xl transition-shadow mx-auto max-w-md"
       style={{
         backgroundColor: brandColors.white,
         borderColor: `${brandColors.navyBlue}1a`,
@@ -43,16 +43,16 @@ const TeamMember = ({
         transition: `all ${styleSettings.transitionSpeed} ease-in-out`,
       }}
     >
-      <div className="aspect-w-1 aspect-h-1 w-full h-96 relative bg-gray-100">
-        <Image 
-          src={imgSrc} 
+      <div className="aspect-w-1 aspect-h-1 w-full h-80 relative bg-gray-100 overflow-hidden">
+        <Image
+          src={imgSrc}
           alt={name}
-          fill
+          width={500}
+          height={500}
+          priority
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           className="object-cover"
-          style={{
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
+          unoptimized
         />
       </div>
       <div className="p-10">
@@ -182,7 +182,7 @@ const AboutUs = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 sm:px-0 max-w-full overflow-hidden">
           {teamMembers.map((member, index) => (
             <TeamMember
               key={index}

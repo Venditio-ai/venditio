@@ -56,10 +56,14 @@ export default function SectionCard({
   const isFirstCard = index === 0;
   const isSecondCard = index === 1;
 
+  // State to track if component is mounted (client-side)
+  const [isMounted, setIsMounted] = useState(false);
+
   // Initialize measurements
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
+    // Set mounted state to true only on client
+    setIsMounted(true);
+    
     // Set initial values
     setWindowHeight(window.innerHeight);
     updateSectionTop();
@@ -95,7 +99,7 @@ export default function SectionCard({
   // Calculate y position based on scroll
   const calculatePosition = () => {
     // Base case for server-side rendering or initial load
-    if (typeof window === "undefined" || !sectionRef.current) {
+    if (!isMounted || !sectionRef.current) {
       return {
         top: 0,
         opacity: 1,
@@ -181,7 +185,7 @@ export default function SectionCard({
     >
       {/* Add extra padding after last section to prevent footer overlap */}
       {sectionInfo?.isLastSection && <div className={styleSettings.sectionSpacing}></div>}
-      {typeof window !== "undefined" && (
+      {isMounted && (
         <motion.div
           initial={false}
           animate={position}
