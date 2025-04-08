@@ -4,6 +4,7 @@ const nextConfig = {
     domains: ["via.placeholder.com"],
   },
   reactStrictMode: true,
+  target: "serverless", // add this line
 };
 
 module.exports = nextConfig;

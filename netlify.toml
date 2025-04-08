@@ -20,9 +20,6 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    # Force using Next.js 13+ App Router
-    use_app_dir = true
 
 # Cache next build folder between builds
 [[plugins]]
