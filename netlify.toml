@@ -7,18 +7,32 @@
   base = "/"
 
 [build.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  # IMPORTANT: Do NOT skip the Next.js plugin as it's needed for SSR
+  NETLIFY_NEXT_PLUGIN_SKIP = "false"
   NODE_VERSION = "18"
   # Use pnpm as the package manager
   NPM_FLAGS = "--version"
   YARN_FLAGS = "--version"
+  # Tell Next.js plugin this is a monorepo
+  NEXT_MONOREPO = "true" 
+  # Tell Next.js plugin where the app is located
+  NEXT_ROOT = "apps/website"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    # Force using Next.js 13+ App Router
+    use_app_dir = true
 
 # Cache next build folder between builds
 [[plugins]]
   package = "netlify-plugin-cache-nextjs"
+
+# Ensure client-side routing works properly
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
 [[headers]]
   for = "/*"

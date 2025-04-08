@@ -1,0 +1,3 @@
+# These redirects are especially important for SPA and Next.js applications
+# Ensure that all routes are handled by the Next.js runtime
+/*  /index.html  200
