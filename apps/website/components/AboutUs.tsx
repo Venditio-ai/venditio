@@ -182,7 +182,7 @@ const AboutUs = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 sm:px-0 max-w-full overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 sm:px-0 max-w-full overflow-hidden">
           {teamMembers.map((member, index) => (
             <TeamMember
               key={index}

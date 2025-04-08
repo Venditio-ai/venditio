@@ -1,5 +1,14 @@
 // /home/baran/Desktop/venditio_ai/apps/website/config/content.ts
 
+import {
+  Bot,
+  Brain,
+  BookOpen,
+  Workflow,
+  BrainCircuit,
+  RefreshCw,
+} from "lucide-react";
+
 export const navbarContent = {
   logoText: "Venditio AI",
   navLinks: [
@@ -98,37 +107,37 @@ export const featuresContent = {
       title: "Omnichannel AI Agents",
       description:
         "Intelligent agents that handle customer conversations across email, chat, phone call, social media, and more with context-awareness and personalization.",
-      icon: "🤖",
+      icon: Bot,
     },
     {
       title: "Persistent Memory",
       description:
         "Never lose context with a unified customer history that remembers all interactions regardless of pipeline, channel or time passed.",
-      icon: "🧠",
+      icon: Brain,
     },
     {
       title: "Centralized Knowledge Base",
       description:
         "A single source of truth for all your product, customer, and company information, automatically referenced during conversations.",
-      icon: "📚",
+      icon: BookOpen,
     },
     {
       title: "Workflow Automation",
       description:
         "Automate repetitive tasks and processes across your customer journey with customizable workflows and triggers.",
-      icon: "⚙️",
+      icon: Workflow,
     },
     {
       title: "AI Insights",
       description:
         "Get actionable intelligence from customer interactions, including sentiment analysis, campaign insights, and intent detection.",
-      icon: "📊",
+      icon: BrainCircuit,
     },
     {
       title: "Seamless Integrations",
       description:
         "Connect with your existing tools including CRM (Salesforce, HubSpot, etc.), marketing platforms, support systems, and communication channels.",
-      icon: "🔄",
+      icon: RefreshCw,
     },
   ],
 };
@@ -206,6 +215,13 @@ export const aboutUsContent = {
       imgSrc: "/images/team/baran_nama.webp",
       linkedIn: "https://www.linkedin.com/in/baran-nama",
     },
+    {
+      name: "Şeyma Özler",
+      title: "Web Developer",
+      bio: "Backend developer with experience in building scalable web applications",
+      imgSrc: "/images/team/seyma_ozler.webp",
+      linkedIn: "https://www.linkedin.com/in/seymaozler/",
+    },
   ],
 };
 
@@ -213,27 +229,27 @@ export const aboutUsContent = {
 export const investmentContent = {
   title: "Investment",
   subtitle:
-    "We are actively looking for investors to support our growth and development. Currently, we are seeking for seed funding.",
+    "We are actively looking for investors to support our growth and development. Please contact for the password of the pitch deck on our email in the footer.",
   investments: [],
   resources: [
     {
-      name: "Seed Pitch Deck (EN)",
-      link: "https://drive.google.com/file/d/1bnCk9N2I6zRJ7ehYGX6lQxi0JhKxsCmq/view?usp=drive_link",
+      name: "Pitch Deck (EN)",
+      link: "https://drive.proton.me/urls/2K5P9JT9FM#qB3qkQwSVc56",
     },
     {
-      name: "Seed Pitch Deck (ES)",
-      link: "https://drive.google.com/file/d/13KI59Wa2fWcFEkw4y-0subAitg35ctr-/view?usp=sharing",
+      name: "Pitch Deck (ES)",
+      link: "https://drive.proton.me/urls/HBY4AE29D8#YH0IZoIhY6I5",
     },
   ],
 };
 
-// Footer content
 export const footerContent = {
   companyInfo: {
     name: "Venditio AI",
     tagline: "Transforming customer workflows with AI",
     description:
       "Unifying sales, marketing, and support into a seamless customer experience platform powered by artificial intelligence.",
+    email: "contact@venditio.ai",
     copyright: ` ${new Date().getFullYear()} Venditio AI. All rights reserved.`,
   },
   links: [
@@ -266,6 +282,7 @@ export const footerContent = {
     },
   ],
   socialLinks: [
+    { name: "Email", href: "mailto:contact@venditio.ai", icon: "email" },
     { name: "Twitter", href: "#", icon: "twitter" },
     { name: "LinkedIn", href: "#", icon: "linkedin" },
     { name: "GitHub", href: "#", icon: "github" },

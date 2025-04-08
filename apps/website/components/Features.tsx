@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { Bot, Brain, RefreshCw, HelpCircle } from "lucide-react";
+import { IconNode, HelpCircle } from "lucide-react";
 import {
   featuresContent,
   brandColors,
@@ -70,7 +70,7 @@ const Features: React.FC = () => {
 type Feature = {
   title: string;
   description: string;
-  icon: string;
+  icon: IconNode;
   imageUrl?: string;
   learnMoreUrl?: string;
 };
@@ -118,15 +118,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
     },
   };
 
-  // Map feature icons to Lucide React icons
-  const iconMap: Record<string, any> = {
-    "🤖": Bot,
-    "🧠": Brain,
-    "🔄": RefreshCw,
-    // Add more icon mappings as needed
-  };
-
-  const IconComponent = iconMap[feature.icon] || HelpCircle;
+  const IconComponent = feature.icon || HelpCircle;
 
   return (
     <motion.div
