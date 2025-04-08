@@ -4,8 +4,6 @@ const nextConfig = {
     domains: ["via.placeholder.com"],
   },
   reactStrictMode: true,
-  // Configure trailing slashes for consistent URLs
-  trailingSlash: true,
 };
 
 module.exports = nextConfig;

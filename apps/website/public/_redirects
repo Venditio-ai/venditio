@@ -1,8 +1,0 @@
-# Handle Next.js specific asset routes
-/_next/*  /_next/:splat  200
-
-# Handle API routes
-/api/*  /api/:splat  200
-
-# Handle all other routes - SPA fallback
-/*  /index.html  200

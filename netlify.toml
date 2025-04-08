@@ -1,41 +1,29 @@
 [build]
   # Build command runs from root of monorepo
   command = "pnpm install --frozen-lockfile && pnpm --filter website run build"
-  # Output directory is relative to root
+  # Output directory for SSR Next.js
   publish = "apps/website/.next"
   # Base directory should be the root of the monorepo
   base = "/"
 
 [build.environment]
-  # IMPORTANT: Do NOT skip the Next.js plugin as it's needed for SSR
   NETLIFY_NEXT_PLUGIN_SKIP = "false"
   NODE_VERSION = "18"
   # Use pnpm as the package manager
   NPM_FLAGS = "--version"
   YARN_FLAGS = "--version"
-  # Tell Next.js plugin this is a monorepo
-  NEXT_MONOREPO = "true" 
-  # Tell Next.js plugin where the app is located
-  NEXT_ROOT = "apps/website"
+  # Required for Next.js monorepo setups
+  NEXT_USE_NETLIFY_EDGE = "true"
+  NEXT_PRIVATE_TARGET = "server"
+  NEXT_MONOREPO = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Cache next build folder between builds
-[[plugins]]
-  package = "netlify-plugin-cache-nextjs"
-
-# Ensure static assets are properly served
-[[redirects]]
-  from = "/_next/*"
-  to = "/_next/:splat"
-  status = 200
-
-# Ensure client-side routing works properly
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Edge function to help with routing
+[[edge_functions]]
+  path = "/*"
+  function = "rewrite"
 
 [[headers]]
   for = "/*"
