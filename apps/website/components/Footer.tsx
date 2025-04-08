@@ -179,7 +179,7 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className="text-white py-8 px-4 mt-0"
+      className="text-white w-full mt-0 overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -189,66 +189,49 @@ const Footer = () => {
         minHeight: styleSettings.footerHeight,
       }}
     >
-      <div className="max-w-6xl mx-auto">
-        {/* Main content - simplified to match navbar */}
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6 py-2">
-          {/* Company Information */}
-          <div className="text-center md:text-left">
-            <a href="#" onClick={(e) => handleSectionClick("hero", e)}>
+      <div className="container mx-auto">
+        {/* Main footer content */}
+        <div className="flex flex-col lg:flex-row justify-between px-4 sm:px-6 py-4">
+          {/* Left: Logo and tagline */}
+          <div className="flex-shrink-0 flex flex-col items-center lg:items-start mb-4 lg:mb-0 max-w-[240px] mx-auto lg:mx-0">
+            <a href="#" onClick={(e) => handleSectionClick("hero", e)} className="mb-2">
               <Image
                 src="/logo/logo_text_no_background.svg"
                 alt="Venditio AI Logo"
-                width={150}
-                height={40}
-                className="h-auto mb-3"
+                width={130}
+                height={35}
+                className="h-auto"
               />
             </a>
-            <p
-              className="text-sm max-w-xs"
-              style={{ color: `${brandColors.white}99` }}
-            >
+            <p className="text-xs text-center lg:text-left" style={{ color: `${brandColors.white}99` }}>
               {companyInfo.tagline}
             </p>
           </div>
 
-          {/* Navigation Links - Same as Navbar */}
-          <div className="flex flex-col items-center md:items-end space-y-4">
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-3">
+          {/* Middle: Navigation links */}
+          <div className="hidden lg:flex justify-center items-center mb-4 lg:mb-0">
+            <ul className="flex flex-wrap justify-center gap-x-8">
               {navLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  onClick={(e) => handleSectionClick(link.href, e)}
-                  className="text-base hover:text-white transition-colors"
-                  style={{
-                    color: `${brandColors.white}99`,
-                    transition: `all ${styleSettings.transitionSpeed} ease-in-out`,
-                  }}
-                >
-                  {link.name}
-                </a>
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleSectionClick(link.href, e)}
+                    className="text-sm hover:text-white transition-colors"
+                    style={{
+                      color: `${brandColors.white}99`,
+                      transition: `all ${styleSettings.transitionSpeed} ease-in-out`,
+                    }}
+                  >
+                    {link.name}
+                  </a>
+                </li>
               ))}
-              <Button
-                asChild
-                className="text-white text-base px-6 py-3 font-medium hover:bg-white transition-all duration-300"
-                style={{
-                  backgroundColor: brandColors.lightNavy,
-                  boxShadow: styleSettings.defaultShadow,
-                  transition: `all ${styleSettings.transitionSpeed} ease-in-out`,
-                }}
-              >
-                <a
-                  href={ctaButtonLink}
-                  onClick={(e) => handleSectionClick(ctaButtonLink, e)}
-                  className="block w-full"
-                >
-                  {ctaButtonText}
-                </a>
-              </Button>
-            </div>
+            </ul>
+          </div>
 
-            {/* Social Icons - Horizontal with larger icons */}
-            <div className="flex space-x-5 mt-4">
+          {/* Right: Social links and CTA */}
+          <div className="flex flex-col items-center lg:items-end mb-4 lg:mb-0">
+            <div className="flex items-center space-x-4 mb-3">
               {socialLinks.map((link, index) => (
                 <Link
                   key={index}
@@ -259,25 +242,61 @@ const Footer = () => {
                     transition: `all ${styleSettings.transitionSpeed} ease-in-out`,
                   }}
                 >
-                  <span className="w-7 h-7 inline-flex">
+                  <span className="w-5 h-5 inline-flex">
                     {getSocialIcon(link.name)}
                   </span>
                 </Link>
               ))}
             </div>
+            <Button
+              asChild
+              className="text-white text-xs px-4 py-1.5 font-medium hover:bg-white transition-all duration-300"
+              style={{
+                backgroundColor: brandColors.lightNavy,
+                boxShadow: styleSettings.defaultShadow,
+                transition: `all ${styleSettings.transitionSpeed} ease-in-out`,
+              }}
+            >
+              <a
+                href={ctaButtonLink}
+                onClick={(e) => handleSectionClick(ctaButtonLink, e)}
+                className="block w-full whitespace-nowrap"
+              >
+                {ctaButtonText}
+              </a>
+            </Button>
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* Mobile navigation - Only visible on small screens */}
+        <div className="lg:hidden px-4 sm:px-6 mb-4">
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+            {navLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                onClick={(e) => handleSectionClick(link.href, e)}
+                className="text-xs hover:text-white transition-colors"
+                style={{
+                  color: `${brandColors.white}99`,
+                  transition: `all ${styleSettings.transitionSpeed} ease-in-out`,
+                }}
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom copyright bar */}
         <div
-          className="border-t mt-6 pt-4 flex flex-col md:flex-row justify-between items-center"
-          style={{ borderColor: `${brandColors.white}33` }}
+          className="border-t border-white/20 mx-4 sm:mx-6 pt-3 pb-3 flex flex-col sm:flex-row justify-between items-center"
         >
-          <p
-            className="text-base mb-3 md:mb-0"
-            style={{ color: `${brandColors.white}66` }}
-          >
+          <p className="text-[10px] mb-1 sm:mb-0" style={{ color: `${brandColors.white}66` }}>
             {companyInfo.copyright}
+          </p>
+          <p className="text-[10px]" style={{ color: `${brandColors.white}66` }}>
+            Made with ❤️ in Barcelona
           </p>
         </div>
       </div>

@@ -196,14 +196,14 @@ export const aboutUsContent = {
       name: "Andreas Andersen",
       title: "Co-Founder & CEO",
       bio: "Background in Sales, Marketing & AI automation",
-      imgSrc: "/images/team/andreas_andersen.png",
+      imgSrc: "/images/team/andreas_andersen.webp",
       linkedIn: "https://www.linkedin.com/in/anders-andersen-28925833b",
     },
     {
       name: "Baran Nama",
       title: "Co-Founder & CTO",
       bio: "Ex-Apple engineer, background as Software and AI engineer",
-      imgSrc: "/images/team/baran_nama.png",
+      imgSrc: "/images/team/baran_nama.webp",
       linkedIn: "https://www.linkedin.com/in/baran-nama",
     },
   ],
@@ -345,7 +345,8 @@ export const styleSettings = {
   // Shadows
   defaultShadow: "0 0.25em 0.375em rgba(0, 0, 0, 0.1)",
   hoverShadow: "0 0.5em 0.75em -0.25em rgba(0, 0, 0, 0.15)",
-  deepShadow: "0 0.625em 0.938em -0.188em rgba(0, 0, 0, 0.1), 0 0.25em 0.375em -0.125em rgba(0, 0, 0, 0.05)",
+  deepShadow:
+    "0 0.625em 0.938em -0.188em rgba(0, 0, 0, 0.1), 0 0.25em 0.375em -0.125em rgba(0, 0, 0, 0.05)",
 
   // Borders
   borderWidth: "1px",
@@ -371,13 +372,13 @@ export const styleSettings = {
   responsive: {
     navbarHeightOffset: 6.25, // Height offset for navbar in em (100px ≈ 6.25em)
     safetyMarginFactor: 1.5, // Extra height margin to prevent content trimming (50%)
-    mobileBreakpoint: 48, // Width breakpoint in em (768px ≈ 48em)
+    mobileBreakpoint: 75, // Width breakpoint in em (768px ≈ 48em)
     resizeThrottleMs: 150, // Throttle time in ms for resize events
     initialLayoutCheckDelayMs: 200, // Delay before initial layout check
   },
 
   // Footer
-  footerHeight: '8rem', // Footer height in rem
+  footerHeight: "2rem", // Footer height in rem
 };
 
 // Tailwind class mappings
@@ -392,7 +393,7 @@ export const sectionConfig = [
     id: "hero",
     index: 0,
     name: "Hero",
-    cardHeight: 62.5, // Height in em (1000px ≈ 62.5em)
+    cardHeight: 56.25, // Height in em (1000px ≈ 62.5em)
     borderColor: twClasses.borderWhite,
     hoverBorderColorHex: brandColors.navyBlue,
     shadowColor: twClasses.shadowBlack,
@@ -403,7 +404,7 @@ export const sectionConfig = [
     id: "problem-solution",
     index: 1,
     name: "Problem & Solution",
-    cardHeight: 50, // Height in em (800px ≈ 50em)
+    cardHeight: 56.25, // Height in em (800px ≈ 50em)
     borderColor: twClasses.borderWhite,
     hoverBorderColorHex: brandColors.navyBlue,
     shadowColor: twClasses.shadowBlack,

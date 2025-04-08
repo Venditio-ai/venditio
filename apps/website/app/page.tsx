@@ -67,7 +67,7 @@ export default function Home() {
 
       {/* Main content with all stacked sections */}
       <main
-        className="flex flex-col w-full relative z-30 bg-gradient-to-b from-white to-venditio-navy/5 overflow-visible flex-grow"
+        className="flex flex-col w-full relative z-10 bg-gradient-to-b from-white to-venditio-navy/5 overflow-visible flex-grow"
         style={{
           paddingBottom: useLayoutStore.getState().useStackedLayout
             ? "40vh"
@@ -114,7 +114,7 @@ export default function Home() {
       </main>
 
       {/* Footer - outside the main content */}
-      <div className="relative z-20 bg-venditio-navy mt-32">
+      <div className="relative z-20 bg-venditio-navy mt-auto">
         <Footer />
       </div>
     </div>

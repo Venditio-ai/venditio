@@ -2,7 +2,12 @@
 
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { heroContent, brandColors, styleSettings, twClasses } from "@/config/content";
+import {
+  heroContent,
+  brandColors,
+  styleSettings,
+  twClasses,
+} from "@/config/content";
 import { scrollToSection } from "../utils/scrollUtils";
 import HeroCircuitAnimation from "./morphing-svg/HeroCircuitAnimation";
 
@@ -91,24 +96,31 @@ function Hero() {
     <>
       <section
         id="hero"
-        className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden"
+        className="relative pt-10 pb-10 md:pt-15 md:pb-15 overflow-hidden"
         style={{
-          background: `linear-gradient(to bottom right, ${brandColors.white}, ${brandColors.lightGray}90)`
+          background: `linear-gradient(to bottom right, ${brandColors.white}, ${brandColors.lightGray}90)`,
         }}
       >
         {/* Additional subtle pattern layer for texture */}
         <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.5))] opacity-20 z-[-5]"></div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           {/* Headline with typing animation */}
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 fade-in" style={{ color: brandColors.navyBlue }}>
+          <h1
+            className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 fade-in"
+            style={{ color: brandColors.navyBlue }}
+          >
             <span className="headline-line1 typing-wrapper cursor-typing">
               {displayedText}
             </span>
             <br />
             <span className="headline-line2 typing-wrapper">
               <span className="second-line-text">
-                <span style={{ color: brandColors.navyBlue }}>{headlinePrefix}</span>
-                <span style={{ color: brandColors.lightNavy }}>{headlineHighlight}</span>
+                <span style={{ color: brandColors.navyBlue }}>
+                  {headlinePrefix}
+                </span>
+                <span style={{ color: brandColors.lightNavy }}>
+                  {headlineHighlight}
+                </span>
               </span>
             </span>
           </h1>
@@ -116,9 +128,9 @@ function Hero() {
           {/* Subheadline with fade-in effect */}
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto mb-8 slide-up"
-            style={{ 
+            style={{
               color: `${brandColors.navyBlue}cc`,
-              animationDelay: "1s" 
+              animationDelay: "1s",
             }}
           >
             {subheadline}
@@ -128,11 +140,11 @@ function Hero() {
           <Button
             size="lg"
             className="text-white slide-up"
-            style={{ 
+            style={{
               backgroundColor: brandColors.navyBlue,
               transition: `all ${styleSettings.transitionSpeed} ease-in-out`,
               boxShadow: styleSettings.defaultShadow,
-              animationDelay: "1.5s"
+              animationDelay: "1.5s",
             }}
             onClick={() => scrollToSection("waitlist")}
           >
@@ -140,20 +152,23 @@ function Hero() {
           </Button>
 
           {/* Visual with Advanced Circuit Animation */}
-          <div className="mt-12 fade-in relative" style={{ animationDelay: "2s" }}>
-            <div 
-              className="aspect-video border rounded-lg shadow-lg flex items-center justify-center hover:shadow-xl transition-all overflow-hidden group" 
-              style={{ 
+          <div
+            className="mt-12 fade-in relative"
+            style={{ animationDelay: "2s" }}
+          >
+            <div
+              className="aspect-video border rounded-lg shadow-lg flex items-center justify-center hover:shadow-xl transition-all overflow-hidden group"
+              style={{
                 backgroundColor: `${brandColors.navyBlue}0a`,
                 borderColor: `${brandColors.navyBlue}1a`,
                 borderWidth: styleSettings.borderWidth,
                 transition: `all ${styleSettings.transitionSpeed} ease-in-out`,
-                boxShadow: styleSettings.defaultShadow
+                boxShadow: styleSettings.defaultShadow,
               }}
             >
               {/* Specialized Venditio Circuit Animation showing unified pipelines */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <HeroCircuitAnimation 
+                <HeroCircuitAnimation
                   primaryColor={brandColors.navyBlue}
                   secondaryColor={brandColors.lightNavy}
                   accentColor="#4A9DFF"
@@ -162,15 +177,15 @@ function Hero() {
                   className="transform scale-95 group-hover:scale-100 transition-transform duration-700"
                 />
               </div>
-              
+
               {/* Visual container hover effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 ease-in-out z-0 bg-gradient-to-br from-transparent to-blue-100"></div>
             </div>
           </div>
         </div>
       </section>
-    </>  
+    </>
   );
-};
+}
 
 export default Hero;
