@@ -1,14 +1,24 @@
 [build]
-  command = "pnpm --filter website run build"
+  # Build command runs from root of monorepo
+  command = "pnpm install --frozen-lockfile && pnpm --filter website run build"
+  # Output directory is relative to root
   publish = "apps/website/.next"
-  base = "apps/website"
+  # Base directory should be the root of the monorepo
+  base = "/"
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
   NODE_VERSION = "18"
+  # Use pnpm as the package manager
+  NPM_FLAGS = "--version"
+  YARN_FLAGS = "--version"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Cache next build folder between builds
+[[plugins]]
+  package = "netlify-plugin-cache-nextjs"
 
 [[headers]]
   for = "/*"
