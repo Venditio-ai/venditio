@@ -80,3 +80,9 @@ typings/
 
 # Turbo specific files
 .turbo
+
+# Next.js build output
+.next/
+
+# Netlify specific files
+.netlify/
