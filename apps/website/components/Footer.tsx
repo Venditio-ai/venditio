@@ -184,20 +184,25 @@ const Footer = () => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={fadeIn}
-      style={{ backgroundColor: brandColors.navyBlue }}
+      style={{
+        backgroundColor: brandColors.navyBlue,
+        minHeight: styleSettings.footerHeight,
+      }}
     >
       <div className="max-w-6xl mx-auto">
         {/* Main content - simplified to match navbar */}
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6 py-2">
           {/* Company Information */}
           <div className="text-center md:text-left">
-            <Image
-              src="/logo/logo_text_no_background.svg"
-              alt="Venditio AI Logo"
-              width={150}
-              height={40}
-              className="h-auto invert mb-3"
-            />
+            <a href="#" onClick={(e) => handleSectionClick("hero", e)}>
+              <Image
+                src="/logo/logo_text_no_background.svg"
+                alt="Venditio AI Logo"
+                width={150}
+                height={40}
+                className="h-auto mb-3"
+              />
+            </a>
             <p
               className="text-sm max-w-xs"
               style={{ color: `${brandColors.white}99` }}

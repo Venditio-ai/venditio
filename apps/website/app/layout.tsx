@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {/* Global particle background that appears on all pages */}
-        <ParticleBackground 
+        <ParticleBackground
           id={particleConfig.id}
           particleColor={particleConfig.particleColor}
           lineColor={particleConfig.lineColor}

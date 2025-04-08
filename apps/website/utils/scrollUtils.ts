@@ -1,5 +1,6 @@
 // Centralized scroll utilities for consistent scrolling across components
 import { sectionConfig } from "@/config/content";
+import { useLayoutStore } from "@/stores/layoutStore";
 
 /**
  * Scroll to a specific section using the stacked card layout approach
@@ -15,12 +16,44 @@ export const scrollToSection = (targetId: string) => {
     return;
   }
 
-  // For hero section, just scroll to top
+  // Get the current layout mode
+  const layoutStore = useLayoutStore.getState();
+  const isStackedLayout = layoutStore.useStackedLayout;
+  
+  console.log(`Scrolling to section ${targetId} in ${isStackedLayout ? 'stacked' : 'flat'} layout mode`);
+
+  // For hero section, just scroll to top regardless of mode
   if (targetSection.index === 0) {
     window.scrollTo({ top: 0, behavior: "smooth" });
     return;
   }
+  
+  // Get direct reference to the target element
+  const targetElement = document.getElementById(targetId);
+  if (!targetElement) {
+    console.error(`Could not find element with ID: ${targetId}`);
+    return;
+  }
+  
+  // FLAT LAYOUT MODE: Direct scroll to the element with offset for navbar
+  if (!isStackedLayout) {
+    const rect = targetElement.getBoundingClientRect();
+    // Calculate position - use element's position relative to document
+    // Use a 5em offset for navbar (consistent with navbarOffset in config)
+    const navbarOffset = 5 * 16; // Convert em to pixels
+    const scrollTo = window.scrollY + rect.top - navbarOffset;
 
+    console.log(`Flat layout: Scrolling directly to ${targetId}. Target: ${scrollTo}`);
+    
+    window.scrollTo({
+      top: Math.max(0, scrollTo),
+      behavior: "smooth",
+    });
+    return;
+  }
+  
+  // STACKED LAYOUT MODE: More complex positioning strategy
+  
   // Strategy: scroll to the section AFTER the one we want to see
   // This forces all cards to stack properly
   const nextSectionIndex = targetSection.index + 1;
@@ -33,10 +66,12 @@ export const scrollToSection = (targetId: string) => {
     const nextSectionElement = document.getElementById(nextSection.id);
     if (nextSectionElement) {
       const rect = nextSectionElement.getBoundingClientRect();
-      const scrollTo = window.scrollY + rect.top - 300; // Offset to make sure we see the target section
+      // Use window height divided by 3 as the offset for consistent positioning
+      const scrollOffset = window.innerHeight / 3;
+      const scrollTo = window.scrollY + rect.top - scrollOffset;
 
       console.log(
-        `Scrolling to show ${targetId} by positioning at ${nextSection.id}. Target: ${scrollTo}`
+        `Stacked layout: Scrolling to show ${targetId} by positioning at ${nextSection.id}. Target: ${scrollTo}`
       );
 
       window.scrollTo({
@@ -58,7 +93,7 @@ export const scrollToSection = (targetId: string) => {
     );
     const scrollTo = documentHeight - window.innerHeight;
 
-    console.log(`Scrolling to last section ${targetId}. Target: ${scrollTo}`);
+    console.log(`Stacked layout: Scrolling to last section ${targetId}. Target: ${scrollTo}`);
 
     window.scrollTo({
       top: scrollTo,

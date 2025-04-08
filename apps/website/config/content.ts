@@ -335,7 +335,7 @@ export const particleConfig = {
 
   // Interactivity - disabled by default but kept in config
   hoverMode: "grab",
-  hoverDistance: 100,
+  hoverDistance: 6.25, // 100px converted to em (100px ≈ 6.25em)
   clickMode: "push",
   clickParticles: 2, // Reduced particles added on click
 };
@@ -343,10 +343,9 @@ export const particleConfig = {
 // Shadow and border settings - consistent styling across components
 export const styleSettings = {
   // Shadows
-  defaultShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-  hoverShadow: "0 8px 12px -4px rgba(0, 0, 0, 0.15)",
-  deepShadow:
-    "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+  defaultShadow: "0 0.25em 0.375em rgba(0, 0, 0, 0.1)",
+  hoverShadow: "0 0.5em 0.75em -0.25em rgba(0, 0, 0, 0.15)",
+  deepShadow: "0 0.625em 0.938em -0.188em rgba(0, 0, 0, 0.1), 0 0.25em 0.375em -0.125em rgba(0, 0, 0, 0.05)",
 
   // Borders
   borderWidth: "1px",
@@ -354,12 +353,31 @@ export const styleSettings = {
 
   // Animations
   transitionSpeed: "0.2s",
-  hoverScale: 1.02,
+  hoverScale: 1.01,
   heroHoverScale: 1.005,
 
+  // Card dimensions
+  cardWidth: "85vw", // Width of cards using viewport width
+  maxCardWidth: "110vw", // Maximum width for cards also using viewport width
+
   // Spacing
-  sectionSpacing: "h-[70vh]", // Space after last section
-  cardSpacing: 60, // Spacing between stacked cards
+  sectionSpacing: "h-[5vh]", // Space after last section
+  cardSpacing: 2, // Spacing between stacked cards in em
+
+  // Stack behavior
+  navbarOffset: 5, // Offset from top in em for the first card (below navbar)
+
+  // Responsive layout settings
+  responsive: {
+    navbarHeightOffset: 6.25, // Height offset for navbar in em (100px ≈ 6.25em)
+    safetyMarginFactor: 1.5, // Extra height margin to prevent content trimming (50%)
+    mobileBreakpoint: 48, // Width breakpoint in em (768px ≈ 48em)
+    resizeThrottleMs: 150, // Throttle time in ms for resize events
+    initialLayoutCheckDelayMs: 200, // Delay before initial layout check
+  },
+
+  // Footer
+  footerHeight: '8rem', // Footer height in rem
 };
 
 // Tailwind class mappings
@@ -374,6 +392,7 @@ export const sectionConfig = [
     id: "hero",
     index: 0,
     name: "Hero",
+    cardHeight: 62.5, // Height in em (1000px ≈ 62.5em)
     borderColor: twClasses.borderWhite,
     hoverBorderColorHex: brandColors.navyBlue,
     shadowColor: twClasses.shadowBlack,
@@ -384,6 +403,7 @@ export const sectionConfig = [
     id: "problem-solution",
     index: 1,
     name: "Problem & Solution",
+    cardHeight: 50, // Height in em (800px ≈ 50em)
     borderColor: twClasses.borderWhite,
     hoverBorderColorHex: brandColors.navyBlue,
     shadowColor: twClasses.shadowBlack,
@@ -394,6 +414,7 @@ export const sectionConfig = [
     id: "features",
     index: 2,
     name: "Features",
+    cardHeight: 56.25, // Height in em (900px ≈ 56.25em)
     borderColor: twClasses.borderWhite,
     hoverBorderColorHex: brandColors.navyBlue,
     shadowColor: twClasses.shadowBlack,
@@ -404,6 +425,7 @@ export const sectionConfig = [
     id: "waitlist",
     index: 3,
     name: "Waitlist",
+    cardHeight: 56.25, // Height in em (900px ≈ 56.25em)
     borderColor: twClasses.borderWhite,
     hoverBorderColorHex: brandColors.navyBlue,
     shadowColor: twClasses.shadowBlack,
@@ -414,6 +436,7 @@ export const sectionConfig = [
     id: "faq",
     index: 4,
     name: "FAQ",
+    cardHeight: 50, // Height in em (800px ≈ 50em)
     borderColor: twClasses.borderWhite,
     hoverBorderColorHex: brandColors.navyBlue,
     shadowColor: twClasses.shadowBlack,
@@ -424,6 +447,7 @@ export const sectionConfig = [
     id: "about",
     index: 5,
     name: "About",
+    cardHeight: 56.25, // Height in em (900px ≈ 56.25em)
     borderColor: twClasses.borderWhite,
     hoverBorderColorHex: brandColors.navyBlue,
     shadowColor: twClasses.shadowBlack,
@@ -434,6 +458,7 @@ export const sectionConfig = [
     id: "investment",
     index: 6,
     name: "Investment",
+    cardHeight: 25, // Height in em (400px ≈ 25em)
     borderColor: twClasses.borderWhite,
     hoverBorderColorHex: brandColors.navyBlue,
     shadowColor: twClasses.shadowBlack,

@@ -58,7 +58,7 @@ const Waitlist: React.FC = () => {
     "Product Manager",
     "Customer Support",
     "Business Development",
-    "Other"
+    "Other",
   ];
 
   // Handle input changes
@@ -94,34 +94,37 @@ const Waitlist: React.FC = () => {
 
     try {
       // Use the database function we created to bypass RLS
-      const { data, error } = await supabase.rpc('add_waitlist_entry', {
+      const { data, error } = await supabase.rpc("add_waitlist_entry", {
         p_full_name: formData.full_name,
         p_email: formData.email,
         p_company: formData.company || null,
         p_role: formData.role || null,
-        p_industry: formData.industry || null
+        p_industry: formData.industry || null,
       });
-      
-      console.log('Waitlist submission response:', data);
-      
+
+      console.log("Waitlist submission response:", data);
+
       // Handle response from our custom function
       if (error) {
-        console.error('Supabase error:', error);
+        console.error("Supabase error:", error);
         throw error;
       }
-      
+
       // Our function returns {success: boolean, data/message: ...}
       if (data && !data.success) {
-        if (data.error_code === '23505') {
+        if (data.error_code === "23505") {
           setSubmitError(
             "This email is already on our waitlist. Thank you for your interest!"
           );
           return;
         }
-        setSubmitError(data.message || "There was an error submitting your information. Please try again.");
+        setSubmitError(
+          data.message ||
+            "There was an error submitting your information. Please try again."
+        );
         return;
       }
-      
+
       // Successful submission
 
       // Reset form and show success message
@@ -234,7 +237,7 @@ const Waitlist: React.FC = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label
                   htmlFor="email"
@@ -258,7 +261,7 @@ const Waitlist: React.FC = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label
                   htmlFor="company"
@@ -281,7 +284,7 @@ const Waitlist: React.FC = () => {
                   placeholder="Acme Inc."
                 />
               </div>
-              
+
               <div>
                 <label
                   htmlFor="industry"
@@ -311,7 +314,7 @@ const Waitlist: React.FC = () => {
                   ))}
                 </select>
               </div>
-              
+
               <div>
                 <label
                   htmlFor="role"
@@ -341,7 +344,7 @@ const Waitlist: React.FC = () => {
                   ))}
                 </select>
               </div>
-              
+
               {submitError && (
                 <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm">
                   {submitError}
@@ -356,7 +359,7 @@ const Waitlist: React.FC = () => {
                   style={{
                     backgroundColor: brandColors.navyBlue,
                     transition: `all ${styleSettings.transitionSpeed} ease-in-out`,
-                    boxShadow: styleSettings.defaultShadow
+                    boxShadow: styleSettings.defaultShadow,
                   }}
                 >
                   {isSubmitting ? (

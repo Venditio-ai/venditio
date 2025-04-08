@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -10,11 +10,16 @@ import { scrollToSection } from "../utils/scrollUtils";
 const Navbar: React.FC = () => {
   const { logoText, navLinks, ctaButtonText, ctaButtonLink } = navbarContent;
   
+  // State for mobile menu toggle
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
   // Handler for internal link clicks
   const handleSectionClick = (href: string, e: React.MouseEvent) => {
     e.preventDefault();
     const targetId = href.replace('#', '');
     scrollToSection(targetId);
+    // Close mobile menu after clicking a link
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -85,32 +90,80 @@ const Navbar: React.FC = () => {
 
           <div className="-mr-2 flex md:hidden">
             <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md hover:bg-opacity-5 focus:outline-none focus:ring-2 focus:ring-inset transition-colors"
               style={{ 
                 color: brandColors.navyBlue,
                 transition: `all ${styleSettings.transitionSpeed} ease-in-out`
               }}
             >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="block h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              </svg>
+              <span className="sr-only">{mobileMenuOpen ? 'Close main menu' : 'Open main menu'}</span>
+              {mobileMenuOpen ? (
+                <svg
+                  className="h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg
+                  className="block h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile menu, show/hide based on menu state */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white py-2 px-2 shadow-inner border-t"
+          style={{ borderColor: brandColors.gray }}
+        >
+          <div className="space-y-1 pt-2 pb-3">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleSectionClick(link.href, e)}
+                className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-50"
+                style={{ color: brandColors.navyBlue }}
+              >
+                {link.name}
+              </a>
+            ))}
+            <div className="px-3 py-2">
+              <Button
+                asChild
+                className="w-full text-white shadow-sm hover:shadow-md transition-all font-medium px-4 py-2 mt-2"
+                style={{ 
+                  backgroundColor: brandColors.navyBlue, 
+                  transition: `all ${styleSettings.transitionSpeed} ease-in-out`,
+                  boxShadow: styleSettings.defaultShadow 
+                }}
+              >
+                <a
+                  href={ctaButtonLink}
+                  onClick={(e) => handleSectionClick(ctaButtonLink, e)}
+                >
+                  <span>{ctaButtonText}</span>
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

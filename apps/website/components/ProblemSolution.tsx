@@ -64,10 +64,10 @@ const ProblemSolution: React.FC = () => {
             }}
             variants={cardVariants}
           >
-            <h2 className="text-3xl font-bold text-venditio-navy mb-4">
+            <h2 className="text-3xl font-bold text-venditio-navy mb-4 text-left">
               {problem.title}
             </h2>
-            <p className="text-venditio-navy/80 mb-8">{problem.description}</p>
+            <p className="text-venditio-navy/80 mb-8 text-left">{problem.description}</p>
 
             <motion.div className="space-y-6" variants={containerVariants}>
               {problem.points.map((point, index) => (
@@ -83,10 +83,10 @@ const ProblemSolution: React.FC = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-semibold text-venditio-navy">
+                    <h3 className="text-lg font-semibold text-venditio-navy text-left">
                       {point.title}
                     </h3>
-                    <p className="text-venditio-navy/70">{point.description}</p>
+                    <p className="text-venditio-navy/70 text-left">{point.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -103,8 +103,8 @@ const ProblemSolution: React.FC = () => {
             variants={cardVariants}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="text-3xl font-bold mb-4">{solution.title}</h2>
-            <p className="text-white/90 mb-8">{solution.description}</p>
+            <h2 className="text-3xl font-bold mb-4 text-left">{solution.title}</h2>
+            <p className="text-white/90 mb-8 text-left">{solution.description}</p>
 
             <motion.div className="space-y-6" variants={containerVariants}>
               {solution.points.map((point, index) => (
@@ -120,8 +120,8 @@ const ProblemSolution: React.FC = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-semibold">{point.title}</h3>
-                    <p className="text-white/80">{point.description}</p>
+                    <h3 className="text-lg font-semibold text-left">{point.title}</h3>
+                    <p className="text-white/80 text-left">{point.description}</p>
                   </div>
                 </motion.div>
               ))}

@@ -50,7 +50,7 @@ const TeamMember = ({
           width={500}
           height={500}
           priority
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
           className="object-cover"
           unoptimized
         />
