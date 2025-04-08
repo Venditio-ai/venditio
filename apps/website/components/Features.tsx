@@ -3,7 +3,8 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { IconNode, HelpCircle } from "lucide-react";
+import { HelpCircle } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import {
   featuresContent,
   brandColors,
@@ -70,7 +71,7 @@ const Features: React.FC = () => {
 type Feature = {
   title: string;
   description: string;
-  icon: IconNode;
+  icon: LucideIcon;
   imageUrl?: string;
   learnMoreUrl?: string;
 };
