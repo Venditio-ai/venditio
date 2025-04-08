@@ -25,6 +25,12 @@
 [[plugins]]
   package = "netlify-plugin-cache-nextjs"
 
+# Ensure static assets are properly served
+[[redirects]]
+  from = "/_next/*"
+  to = "/_next/:splat"
+  status = 200
+
 # Ensure client-side routing works properly
 [[redirects]]
   from = "/*"
